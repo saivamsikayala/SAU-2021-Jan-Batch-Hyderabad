@@ -1,0 +1,159 @@
+CREATE TABLE PRODUCT (
+	product_code numeric UNIQUE NOT NULL,
+    product_name varchar(20) NOT NULL,
+    product_price numeric NOT NULL
+);
+
+INSERT INTO PRODUCT
+VALUES (1, 'Jeans', 800);
+INSERT INTO PRODUCT
+VALUES (2, 'Table', 1800);
+INSERT INTO PRODUCT
+VALUES (3, 'Chair', 700);
+INSERT INTO PRODUCT
+VALUES (4, 'Mobile', 18000);
+
+SELECT * FROM PRODUCT;
+
+CREATE TABLE CATEGORY (
+	category_code numeric PRIMARY KEY,
+    category_name varchar(20) NOT NULL,
+    product_code numeric,
+    FOREIGN KEY(product_code) references PRODUCT(product_code)
+);
+
+INSERT INTO CATEGORY
+VALUES (10, 'WARDROBE', 1);
+INSERT INTO CATEGORY
+VALUES (12, 'Furniture', 2);
+INSERT INTO CATEGORY
+VALUES (13, 'Furniture', 3);
+INSERT INTO CATEGORY
+VALUES (11, 'Gadgets', 4);
+
+SELECT * FROM CATEGORY;
+
+CREATE TABLE SALES_EXECUTIVE (
+	executive_id numeric PRIMARY KEY,
+    executive_name varchar(20) NOT NULL,
+    dob date NOT NULL,
+    gender varchar(10) NOT NULL,
+    mobile numeric(10) NOT NULL
+);
+
+ALTER TABLE SALES_EXECUTIVE
+MODIFY COLUMN dob varchar(20);
+
+INSERT INTO SALES_EXECUTIVE
+VALUES (101, 'Srikanth', '22/12/2000','Male','9999999999');
+INSERT INTO SALES_EXECUTIVE
+VALUES (102, 'Raviteja', '22/11/2000','Male','9979999999');
+INSERT INTO SALES_EXECUTIVE
+VALUES (103, 'Vamsi', '27/01/2000','Male','9999909999');
+INSERT INTO SALES_EXECUTIVE
+VALUES (104, 'Manikanta', '02/12/2000','Male','9979999999');
+
+SELECT * FROM SALES_EXECUTIVE;
+
+CREATE TABLE LOCATION (
+	location_code numeric PRIMARY KEY,
+    location_name varchar(20) NOT NULL
+);
+
+ALTER TABLE LOCATION ADD executive_id numeric;
+ALTER TABLE LOCATION ADD category_code numeric;
+
+ALTER TABLE LOCATION ADD FOREIGN KEY(executive_id) references SALES_EXECUTIVE(executive_id);
+ALTER TABLE LOCATION ADD FOREIGN KEY(category_code) references CATEGORY(category_code);
+
+INSERT INTO LOCATION
+VALUES (1001, 'Gachibowli', 103, 11);
+INSERT INTO LOCATION
+VALUES (1002, 'Bhimavaram', 102, 11);
+INSERT INTO LOCATION
+VALUES (1003, 'Rajamundry', 103, 11);
+INSERT INTO LOCATION
+VALUES (1004, 'Visakhapatnam', 103, 11);
+INSERT INTO LOCATION
+VALUES (1005, 'Vijayawada', 101, 11);
+INSERT INTO LOCATION
+VALUES (1006, 'Warangal', 103, 11);
+
+SELECT * FROM LOCATION;
+
+CREATE TABLE CUSTOMER (
+	customer_id numeric PRIMARY KEY,
+    customer_name varchar(20) NOT NULL,
+    dob date NOT NULL,
+    gender varchar(10) NOT NULL,
+    mobile numeric(10) NOT NULL
+);
+
+ALTER TABLE CUSTOMER
+MODIFY COLUMN dob varchar(20);
+
+INSERT INTO CUSTOMER
+VALUES (10001, 'Raju', '28/01/2000', 'Male', '9999999999');
+INSERT INTO CUSTOMER
+VALUES (10002, 'Meher', '27/01/2000', 'Female', '9999899999');
+INSERT INTO CUSTOMER
+VALUES (10003, 'Bala', '28/01/2000', 'Male', '9990999999');
+INSERT INTO CUSTOMER
+VALUES (10004, 'Surya', '28/11/2000', 'Male', '9990999999');
+
+SELECT * FROM CUSTOMER;
+
+CREATE TABLE PRODUCT_PURCHASE(
+	purchase_id numeric PRIMARY KEY,
+    purchase_date date NOT NULL,
+    purchase_units numeric NOT NULL
+);
+
+ALTER TABLE PRODUCT_PURCHASE ADD product_code numeric;
+ALTER TABLE PRODUCT_PURCHASE ADD customer_id numeric;
+ALTER TABLE PRODUCT_PURCHASE ADD location_code numeric;
+ALTER TABLE PRODUCT_PURCHASE ADD executive_id numeric;
+
+ALTER TABLE PRODUCT_PURCHASE ADD FOREIGN KEY(product_code) references PRODUCT(product_code);
+ALTER TABLE PRODUCT_PURCHASE ADD FOREIGN KEY(customer_id) references CUSTOMER(customer_id);
+ALTER TABLE PRODUCT_PURCHASE ADD FOREIGN KEY(location_code) references LOCATION(location_code);
+ALTER TABLE PRODUCT_PURCHASE ADD FOREIGN KEY(executive_id) references SALES_EXECUTIVE(executive_id);
+
+ALTER TABLE PRODUCT_PURCHASE
+MODIFY COLUMN purchase_date varchar(20);
+
+
+INSERT INTO PRODUCT_PURCHASE
+VALUES (100001, '28/11/2000', 1, 10002, 1, 1001, 103);
+INSERT INTO PRODUCT_PURCHASE
+VALUES (100002, '24/11/2000', 1, 10001, 3, 1001, 103);
+INSERT INTO PRODUCT_PURCHASE
+VALUES (100003, '21/11/2000', 1, 10001, 4, 1001, 102);
+INSERT INTO PRODUCT_PURCHASE
+VALUES (100004, '21/11/2000', 1, 10003, 4, 1003, 101);
+INSERT INTO PRODUCT_PURCHASE
+VALUES (100005, '21/11/2000', 1, 10004, 4,1002, 101);
+
+SELECT * FROM PRODUCT_PURCHASE;
+
+SELECT count(*) SOLD,p.product_code, pp.purchase_date FROM PRODUCT_PURCHASE pp INNER JOIN PRODUCT p WHERE (pp.product_code=p.product_code) GROUP BY p.product_code ORDER BY 1 DESC;
+
+SELECT executive_name, count(*) prod_count FROM PRODUCT_PURCHASE pp INNER JOIN SALES_EXECUTIVE s WHERE(s.executive_id=pp.executive_id) GROUP BY s.executive_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
