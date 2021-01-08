@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <title>Progress Bar</title>
+    <body onload="move()">
+        <div class="bar">
+            <h2>Progress Bar</h2>
+            <div class="incomplete" style = "background-color: grey;">
+                <div id="myBar" class="complete" style="height:24px;width:0;background-color: yellowgreen;text-align: center;"></div>
+            </div>
+        </div>
+
+        <script>
+            function move() {
+                var elem = document.getElementById("myBar");   
+                var width = 1;
+                var id = setInterval(frame,20);
+                function frame() {
+                    if (width>100) {
+                        clearInterval(id);
+                    }
+                    else {
+                        document.getElementById("myBar").innerHTML=width+' %';
+                        width++; 
+                        elem.style.width = width+'%'; 
+                    }
+                }
+            }
+        </script>
+    </body>
+</html> 

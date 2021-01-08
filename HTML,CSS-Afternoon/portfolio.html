@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Web page</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    </head>
+    <body>
+        <div class="external">
+            <div class="left">
+                <img class="profile" src="profile.jpg" width="200" />
+                <h1 class="name">K Sai Vamsi</h1>
+                <h4 class="desc">CSE</h4>
+            </div>
+            <div class="right">
+                <p class="about">Interested in machine learning and other trending technologies. Tech enthusiast.</p>
+                <a href="https://github.com/saivamsikayala">Github</a>
+                <ul>
+                    <li>Java</li>
+                    <li>c,c++</li>
+                    <li>Python</li>
+                    <li>ML</li>
+                    <li>MYSQL</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <style>
+        html, body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, rgba(231, 240, 245, 1) 0%, rgba(170, 221, 235, 1) 100%);
+        }
+
+        .name {
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 2px;
+        }
+
+        .external {
+            background-color: whitesmoke;
+            border-radius: 25px;
+            max-width: 50%;
+            display: flex;
+            flex-direction: row;
+            height: 80%;
+        }
+
+        .left, .right {
+            /* background-color: whitesmoke; */
+            margin: 5px;
+            max-width: 50%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile {
+            border-radius: 50%;
+        }
+    </style>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login Page</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <h2><center>Login Form</center></h2>
+    <div class="login-component">
+        <form action="" method="post">
+         <div class="input-group">
+           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+         </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <br>
+        <a href="#"><span class="pwd"><i>Forgot Password?</i></span>
+        <br><br>
+        <div class="submit-btn">
+            <button class="btn btn-success">Login</button>
+        </div>
+        <div class="social-media-container">
+          <button class="fa fa-facebook"></button>
+          <button class="fa fa-google"></button>
+          <button class="fa fa-twitter"></button>
+        </div>
+      </form>
+    </div>     
+  </body>
+
+<style>
+  .login-component {
+    position:relative;
+    top:25px;
+    margin:auto;
+    padding:auto;
+    border:1px solid black;
+    width:400px;
+    height:350px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+    border-radius:5px;
+  }
+  .input-group{
+    padding-top:30px;
+    margin-left:20px;
+    margin-right:20px;
+  }
+  .submit-btn {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .pwd{
+    float : right;
+  }
+  .fa {
+    border-radius:50%;
+    width:50px;
+    height:50px;
+    margin-top:20px;
+    margin-right:20px;
+    color:white;
+  }
+  .fa-facebook{
+    background-color:#3B5998;
+  }
+  .fa-google{
+    background-color:#DD4B39;
+  }
+  .fa-twitter {
+    background-color:#55ACEE;
+  }
+  .fa:hover{
+    transform:scaleX(1.2);
+  }
+
+  .social-media-container{
+    display: flex;
+    justify-content: center;
+    align-items : center;
+  }
+
+</style>
+</html>
