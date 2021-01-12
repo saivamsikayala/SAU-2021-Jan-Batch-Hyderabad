@@ -1,0 +1,9 @@
+Operand 1: <input type="number" [(ngModel)]="op1" name="tb1" placeholder="Enter first Number">
+Operand 2: <input type="number" [(ngModel)]="op2" name="tb2" placeholder="Enter second Number">
+Result: <label>{{this.result}}</label>
+<br>
+<button mat-stroked-button type="submit" id="add" (click)="addition()" color="primary">+</button>
+<button mat-stroked-button type="submit" id="sub" (click)="subtraction(op1,op2)" color="primary">-</button>
+<br>
+<button mat-stroked-button type="submit" id="mul" (click)="multiplication(op1,op2)" color="primary">*</button>
+<button mat-stroked-button type="submit" id="div" (click)="division(op1,op2)" color="primary">/</button>

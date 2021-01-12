@@ -1,0 +1,11 @@
+<table *ngIf="albumList.length>0">
+    <th>UserId</th>
+    <th>Id</th>
+    <th>Title</th>
+    <tr *ngFor="let album of albumList">
+      <td>{{album.userId}}</td>
+      <td>{{album.id}}</td>
+      <td>{{album.title}}</td>
+    </tr>
+  </table>
+  

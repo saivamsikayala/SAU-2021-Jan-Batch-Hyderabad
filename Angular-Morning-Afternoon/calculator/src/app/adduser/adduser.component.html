@@ -1,0 +1,48 @@
+<h1>Add User Form</h1>
+
+<form novalidate [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <input 
+        formControlName="firstname"
+        placeholder="First Name"
+        type="text"
+        required
+    />
+    <input 
+        formControlName="lastname"
+        placeholder="Last Name"
+        type="text"
+        required
+    />
+    <input 
+        formControlName="email"
+        placeholder="Email"
+        type="email"
+        required
+    />
+    <input 
+        formControlName="phn"
+        placeholder="Phn No."
+        type="number"
+        required
+    />
+    <button mat-raised-button type="submit" color="primary">Add User!</button>
+</form>
+
+<div *ngIf="userList">
+    <div>
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+            <th mat-sort-header="fname">First Name</th>
+            <th mat-sort-header="lname">Last Name</th>
+            <th mat-sort-header="email">Email</th>
+            <th mat-sort-header="phn">Phone Number</th>
+        </tr>
+        <tr *ngFor="let user of userList">
+            <td>{{user.firstname | lowercase}}</td>
+            <td>{{user.lastname | lowercase}}</td>
+            <td>{{user.email | lowercase}}</td>
+            <td>{{user.phn}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
