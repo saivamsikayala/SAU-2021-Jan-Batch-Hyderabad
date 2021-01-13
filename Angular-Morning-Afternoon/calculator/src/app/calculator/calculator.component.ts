@@ -24,12 +24,12 @@ export class CalculatorComponent implements OnInit {
     this.result =  this.calc.subtract(this.op1,this.op2);
   }
 
-  multiplication(a: number, b: number){
+  multiplication(){
     this.result =  this.calc.multiply(this.op1,this.op2);
   }
 
-  division(a: number, b: number){
-    this.result =  this.calc.divide(a,b);
+  division(){
+    this.result =  this.calc.divide(this.op1,this.op2);
   }
 
 }
